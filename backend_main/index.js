@@ -11,9 +11,14 @@ const app = express();
 const port = process.env.PORT || 5000;
 
 // Middleware to parse JSON request bodies
-app.use(cors({
-    origin: 'http://localhost:5173' // Replace with your frontend URL
-}));
+// app.use(cors({
+//     origin: 'http://localhost:5173' // Replace with your frontend URL
+// }));
+// app.use(express.json());
+// app.use(bodyParser.json());
+
+// Middleware to parse JSON request bodies
+app.use(cors()); // This will allow access from all origins
 app.use(express.json());
 app.use(bodyParser.json());
 

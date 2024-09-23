@@ -80,12 +80,23 @@ function DoctorAppointment() {
   const calculateAge = (dob) => {
     const birthDate = new Date(dob);
     const today = new Date();
-    let age = today.getFullYear() - birthDate.getFullYear();
-    const monthDiff = today.getMonth() - birthDate.getMonth();
-    if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
-      age--;
-    }
-    return age; // Convert age to string as form expects string inputs
+  
+  // Calculate the year difference
+  let years = today.getFullYear() - birthDate.getFullYear();
+  
+  // Calculate the month difference
+  let months = today.getMonth() - birthDate.getMonth();
+  
+  // Adjust the total number of years and months if necessary
+  if (months < 0 || (months === 0 && today.getDate() < birthDate.getDate())) {
+    years--;
+    months += 12; // Add 12 months to correct the negative month difference
+  }
+  
+  // Total age in months
+  const ageInMonths = (years * 12) + months;
+  
+  return ageInMonths.toString();// Convert age to string as form expects string inputs
   };
   const handleSubmitAppointment = (e) => {
     e.preventDefault();
@@ -219,7 +230,7 @@ function DoctorAppointment() {
                 <input type="date" name="dateOfBirth" value={patientDetails.dateOfBirth} onChange={handleInputChange} />
               </div>
               <div className="form-group">
-                <label>Age:</label>
+                <label>Age(Months):</label>
                 <input type="text" name="age" value={patientDetails.age} readOnly /> {/* Age is now read-only */}
               </div>
               <div className="form-group">

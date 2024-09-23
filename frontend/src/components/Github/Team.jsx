@@ -43,7 +43,7 @@ const teamMembers = [
   },
   {
     name: 'Akash Mondal',
-    role: 'Website Designer',
+    role: 'Frontend Developer',
     githubUrl: 'https://github.com/Akash-Mondal2004',
     linkedinUrl: 'https://www.linkedin.com/in/akash-mondal-518641267?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
     image: AkashImg, // Replace with actual image URL
